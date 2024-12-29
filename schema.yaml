@@ -1,0 +1,4542 @@
+openapi: 3.0.3
+info:
+  title: All Marketplaces API
+  version: 1.0.0
+  description: Documentation of API endpoints of All Marketplaces
+paths:
+  /api/addresses/:
+    get:
+      operationId: addresses_list
+      tags:
+      - addresses
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Address'
+          description: ''
+    post:
+      operationId: addresses_create
+      tags:
+      - addresses
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Address'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Address'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Address'
+        required: true
+      security:
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Address'
+          description: ''
+  /api/addresses/{id}/:
+    get:
+      operationId: addresses_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Address.
+        required: true
+      tags:
+      - addresses
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Address'
+          description: ''
+    put:
+      operationId: addresses_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Address.
+        required: true
+      tags:
+      - addresses
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Address'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Address'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Address'
+        required: true
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Address'
+          description: ''
+    patch:
+      operationId: addresses_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Address.
+        required: true
+      tags:
+      - addresses
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAddress'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAddress'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAddress'
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Address'
+          description: ''
+    delete:
+      operationId: addresses_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Address.
+        required: true
+      tags:
+      - addresses
+      security:
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/auth-token/:
+    post:
+      operationId: auth_token_create
+      tags:
+      - auth-token
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+        required: true
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthToken'
+          description: ''
+  /api/errors/:
+    get:
+      operationId: errors_list
+      tags:
+      - errors
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Error'
+          description: ''
+  /api/errors/{id}/:
+    get:
+      operationId: errors_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Error.
+        required: true
+      tags:
+      - errors
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: ''
+  /api/geo-regions/:
+    get:
+      operationId: geo_regions_list
+      tags:
+      - geo-regions
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GeoRegion'
+          description: ''
+    post:
+      operationId: geo_regions_create
+      tags:
+      - geo-regions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GeoRegion'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GeoRegion'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/GeoRegion'
+        required: true
+      security:
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeoRegion'
+          description: ''
+  /api/geo-regions/{id}/:
+    get:
+      operationId: geo_regions_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Geo Region.
+        required: true
+      tags:
+      - geo-regions
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeoRegion'
+          description: ''
+    put:
+      operationId: geo_regions_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Geo Region.
+        required: true
+      tags:
+      - geo-regions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GeoRegion'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GeoRegion'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/GeoRegion'
+        required: true
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeoRegion'
+          description: ''
+    patch:
+      operationId: geo_regions_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Geo Region.
+        required: true
+      tags:
+      - geo-regions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedGeoRegion'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedGeoRegion'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedGeoRegion'
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeoRegion'
+          description: ''
+    delete:
+      operationId: geo_regions_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Geo Region.
+        required: true
+      tags:
+      - geo-regions
+      security:
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/order-lines/:
+    get:
+      operationId: order_lines_list
+      tags:
+      - order-lines
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderLine'
+          description: ''
+    post:
+      operationId: order_lines_create
+      tags:
+      - order-lines
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderLine'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OrderLine'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OrderLine'
+        required: true
+      security:
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderLine'
+          description: ''
+  /api/order-lines/{id}/:
+    get:
+      operationId: order_lines_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this order line.
+        required: true
+      tags:
+      - order-lines
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderLine'
+          description: ''
+    put:
+      operationId: order_lines_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this order line.
+        required: true
+      tags:
+      - order-lines
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderLine'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OrderLine'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OrderLine'
+        required: true
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderLine'
+          description: ''
+    patch:
+      operationId: order_lines_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this order line.
+        required: true
+      tags:
+      - order-lines
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedOrderLine'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedOrderLine'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedOrderLine'
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderLine'
+          description: ''
+    delete:
+      operationId: order_lines_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this order line.
+        required: true
+      tags:
+      - order-lines
+      security:
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/orders/:
+    get:
+      operationId: orders_list
+      tags:
+      - orders
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+          description: ''
+    post:
+      operationId: orders_create
+      tags:
+      - orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Order'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Order'
+        required: true
+      security:
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+  /api/orders/{id}/:
+    get:
+      operationId: orders_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Order.
+        required: true
+      tags:
+      - orders
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+    put:
+      operationId: orders_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Order.
+        required: true
+      tags:
+      - orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Order'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Order'
+        required: true
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+    patch:
+      operationId: orders_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Order.
+        required: true
+      tags:
+      - orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedOrder'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedOrder'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedOrder'
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+    delete:
+      operationId: orders_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Order.
+        required: true
+      tags:
+      - orders
+      security:
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/postal-codes/:
+    get:
+      operationId: postal_codes_list
+      tags:
+      - postal-codes
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PostalCode'
+          description: ''
+    post:
+      operationId: postal_codes_create
+      tags:
+      - postal-codes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostalCode'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PostalCode'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PostalCode'
+        required: true
+      security:
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostalCode'
+          description: ''
+  /api/postal-codes/{id}/:
+    get:
+      operationId: postal_codes_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Postal Code.
+        required: true
+      tags:
+      - postal-codes
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostalCode'
+          description: ''
+    put:
+      operationId: postal_codes_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Postal Code.
+        required: true
+      tags:
+      - postal-codes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostalCode'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PostalCode'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PostalCode'
+        required: true
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostalCode'
+          description: ''
+    patch:
+      operationId: postal_codes_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Postal Code.
+        required: true
+      tags:
+      - postal-codes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPostalCode'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPostalCode'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPostalCode'
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostalCode'
+          description: ''
+    delete:
+      operationId: postal_codes_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Postal Code.
+        required: true
+      tags:
+      - postal-codes
+      security:
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/schema/:
+    get:
+      operationId: schema_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - ckb
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - ms
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - ug
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - schema
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/store-orders/:
+    get:
+      operationId: store_orders_list
+      tags:
+      - store-orders
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StoreOrder'
+          description: ''
+    post:
+      operationId: store_orders_create
+      tags:
+      - store-orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreOrder'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/StoreOrder'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/StoreOrder'
+        required: true
+      security:
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoreOrder'
+          description: ''
+  /api/store-orders/{id}/:
+    get:
+      operationId: store_orders_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this store order.
+        required: true
+      tags:
+      - store-orders
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoreOrder'
+          description: ''
+    put:
+      operationId: store_orders_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this store order.
+        required: true
+      tags:
+      - store-orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreOrder'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/StoreOrder'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/StoreOrder'
+        required: true
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoreOrder'
+          description: ''
+    patch:
+      operationId: store_orders_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this store order.
+        required: true
+      tags:
+      - store-orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedStoreOrder'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedStoreOrder'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedStoreOrder'
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoreOrder'
+          description: ''
+    delete:
+      operationId: store_orders_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this store order.
+        required: true
+      tags:
+      - store-orders
+      security:
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/users/:
+    get:
+      operationId: users_list
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+          description: ''
+  /api/users/{id}/:
+    get:
+      operationId: users_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this user.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: users_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this user.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    patch:
+      operationId: users_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this user.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/users/me/:
+    get:
+      operationId: users_me_retrieve
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+components:
+  schemas:
+    Address:
+      type: object
+      properties:
+        line1:
+          type: string
+          description: First line of the address (e.g. '123 Main St')
+          maxLength: 255
+        line2:
+          type: string
+          nullable: true
+          description: Second line of the address if needed (e.g. 'Apt 4B')
+          maxLength: 255
+        city:
+          type: string
+          description: City name (e.g. 'New York')
+          maxLength: 255
+        state:
+          type: string
+          description: State or province name (e.g. 'NY')
+          maxLength: 255
+        postal_code:
+          type: string
+          description: Postal or ZIP code (e.g. '10001')
+          maxLength: 255
+        country:
+          allOf:
+          - $ref: '#/components/schemas/CountryEnum'
+          description: |-
+            Two-letter country code (e.g. 'US')
+
+            * `AF` - Afghanistan
+            * `AX` - Åland Islands
+            * `AL` - Albania
+            * `DZ` - Algeria
+            * `AS` - American Samoa
+            * `AD` - Andorra
+            * `AO` - Angola
+            * `AI` - Anguilla
+            * `AQ` - Antarctica
+            * `AG` - Antigua and Barbuda
+            * `AR` - Argentina
+            * `AM` - Armenia
+            * `AW` - Aruba
+            * `AU` - Australia
+            * `AT` - Austria
+            * `AZ` - Azerbaijan
+            * `BS` - Bahamas
+            * `BH` - Bahrain
+            * `BD` - Bangladesh
+            * `BB` - Barbados
+            * `BY` - Belarus
+            * `BE` - Belgium
+            * `BZ` - Belize
+            * `BJ` - Benin
+            * `BM` - Bermuda
+            * `BT` - Bhutan
+            * `BO` - Bolivia
+            * `BQ` - Bonaire, Sint Eustatius and Saba
+            * `BA` - Bosnia and Herzegovina
+            * `BW` - Botswana
+            * `BV` - Bouvet Island
+            * `BR` - Brazil
+            * `IO` - British Indian Ocean Territory
+            * `BN` - Brunei
+            * `BG` - Bulgaria
+            * `BF` - Burkina Faso
+            * `BI` - Burundi
+            * `CV` - Cabo Verde
+            * `KH` - Cambodia
+            * `CM` - Cameroon
+            * `CA` - Canada
+            * `KY` - Cayman Islands
+            * `CF` - Central African Republic
+            * `TD` - Chad
+            * `CL` - Chile
+            * `CN` - China
+            * `CX` - Christmas Island
+            * `CC` - Cocos (Keeling) Islands
+            * `CO` - Colombia
+            * `KM` - Comoros
+            * `CG` - Congo
+            * `CD` - Congo (the Democratic Republic of the)
+            * `CK` - Cook Islands
+            * `CR` - Costa Rica
+            * `CI` - Côte d'Ivoire
+            * `HR` - Croatia
+            * `CU` - Cuba
+            * `CW` - Curaçao
+            * `CY` - Cyprus
+            * `CZ` - Czechia
+            * `DK` - Denmark
+            * `DJ` - Djibouti
+            * `DM` - Dominica
+            * `DO` - Dominican Republic
+            * `EC` - Ecuador
+            * `EG` - Egypt
+            * `SV` - El Salvador
+            * `GQ` - Equatorial Guinea
+            * `ER` - Eritrea
+            * `EE` - Estonia
+            * `SZ` - Eswatini
+            * `ET` - Ethiopia
+            * `FK` - Falkland Islands (Malvinas)
+            * `FO` - Faroe Islands
+            * `FJ` - Fiji
+            * `FI` - Finland
+            * `FR` - France
+            * `GF` - French Guiana
+            * `PF` - French Polynesia
+            * `TF` - French Southern Territories
+            * `GA` - Gabon
+            * `GM` - Gambia
+            * `GE` - Georgia
+            * `DE` - Germany
+            * `GH` - Ghana
+            * `GI` - Gibraltar
+            * `GR` - Greece
+            * `GL` - Greenland
+            * `GD` - Grenada
+            * `GP` - Guadeloupe
+            * `GU` - Guam
+            * `GT` - Guatemala
+            * `GG` - Guernsey
+            * `GN` - Guinea
+            * `GW` - Guinea-Bissau
+            * `GY` - Guyana
+            * `HT` - Haiti
+            * `HM` - Heard Island and McDonald Islands
+            * `VA` - Holy See
+            * `HN` - Honduras
+            * `HK` - Hong Kong
+            * `HU` - Hungary
+            * `IS` - Iceland
+            * `IN` - India
+            * `ID` - Indonesia
+            * `IR` - Iran
+            * `IQ` - Iraq
+            * `IE` - Ireland
+            * `IM` - Isle of Man
+            * `IL` - Israel
+            * `IT` - Italy
+            * `JM` - Jamaica
+            * `JP` - Japan
+            * `JE` - Jersey
+            * `JO` - Jordan
+            * `KZ` - Kazakhstan
+            * `KE` - Kenya
+            * `KI` - Kiribati
+            * `KW` - Kuwait
+            * `KG` - Kyrgyzstan
+            * `LA` - Laos
+            * `LV` - Latvia
+            * `LB` - Lebanon
+            * `LS` - Lesotho
+            * `LR` - Liberia
+            * `LY` - Libya
+            * `LI` - Liechtenstein
+            * `LT` - Lithuania
+            * `LU` - Luxembourg
+            * `MO` - Macao
+            * `MG` - Madagascar
+            * `MW` - Malawi
+            * `MY` - Malaysia
+            * `MV` - Maldives
+            * `ML` - Mali
+            * `MT` - Malta
+            * `MH` - Marshall Islands
+            * `MQ` - Martinique
+            * `MR` - Mauritania
+            * `MU` - Mauritius
+            * `YT` - Mayotte
+            * `MX` - Mexico
+            * `FM` - Micronesia
+            * `MD` - Moldova
+            * `MC` - Monaco
+            * `MN` - Mongolia
+            * `ME` - Montenegro
+            * `MS` - Montserrat
+            * `MA` - Morocco
+            * `MZ` - Mozambique
+            * `MM` - Myanmar
+            * `NA` - Namibia
+            * `NR` - Nauru
+            * `NP` - Nepal
+            * `NL` - Netherlands
+            * `NC` - New Caledonia
+            * `NZ` - New Zealand
+            * `NI` - Nicaragua
+            * `NE` - Niger
+            * `NG` - Nigeria
+            * `NU` - Niue
+            * `NF` - Norfolk Island
+            * `KP` - North Korea
+            * `MK` - North Macedonia
+            * `MP` - Northern Mariana Islands
+            * `NO` - Norway
+            * `OM` - Oman
+            * `PK` - Pakistan
+            * `PW` - Palau
+            * `PS` - Palestine, State of
+            * `PA` - Panama
+            * `PG` - Papua New Guinea
+            * `PY` - Paraguay
+            * `PE` - Peru
+            * `PH` - Philippines
+            * `PN` - Pitcairn
+            * `PL` - Poland
+            * `PT` - Portugal
+            * `PR` - Puerto Rico
+            * `QA` - Qatar
+            * `RE` - Réunion
+            * `RO` - Romania
+            * `RU` - Russia
+            * `RW` - Rwanda
+            * `BL` - Saint Barthélemy
+            * `SH` - Saint Helena, Ascension and Tristan da Cunha
+            * `KN` - Saint Kitts and Nevis
+            * `LC` - Saint Lucia
+            * `MF` - Saint Martin (French part)
+            * `PM` - Saint Pierre and Miquelon
+            * `VC` - Saint Vincent and the Grenadines
+            * `WS` - Samoa
+            * `SM` - San Marino
+            * `ST` - Sao Tome and Principe
+            * `SA` - Saudi Arabia
+            * `SN` - Senegal
+            * `RS` - Serbia
+            * `SC` - Seychelles
+            * `SL` - Sierra Leone
+            * `SG` - Singapore
+            * `SX` - Sint Maarten (Dutch part)
+            * `SK` - Slovakia
+            * `SI` - Slovenia
+            * `SB` - Solomon Islands
+            * `SO` - Somalia
+            * `ZA` - South Africa
+            * `GS` - South Georgia and the South Sandwich Islands
+            * `KR` - South Korea
+            * `SS` - South Sudan
+            * `ES` - Spain
+            * `LK` - Sri Lanka
+            * `SD` - Sudan
+            * `SR` - Suriname
+            * `SJ` - Svalbard and Jan Mayen
+            * `SE` - Sweden
+            * `CH` - Switzerland
+            * `SY` - Syria
+            * `TW` - Taiwan
+            * `TJ` - Tajikistan
+            * `TZ` - Tanzania
+            * `TH` - Thailand
+            * `TL` - Timor-Leste
+            * `TG` - Togo
+            * `TK` - Tokelau
+            * `TO` - Tonga
+            * `TT` - Trinidad and Tobago
+            * `TN` - Tunisia
+            * `TR` - Türkiye
+            * `TM` - Turkmenistan
+            * `TC` - Turks and Caicos Islands
+            * `TV` - Tuvalu
+            * `UG` - Uganda
+            * `UA` - Ukraine
+            * `AE` - United Arab Emirates
+            * `GB` - United Kingdom
+            * `UM` - United States Minor Outlying Islands
+            * `US` - United States of America
+            * `UY` - Uruguay
+            * `UZ` - Uzbekistan
+            * `VU` - Vanuatu
+            * `VE` - Venezuela
+            * `VN` - Vietnam
+            * `VG` - Virgin Islands (British)
+            * `VI` - Virgin Islands (U.S.)
+            * `WF` - Wallis and Futuna
+            * `EH` - Western Sahara
+            * `YE` - Yemen
+            * `ZM` - Zambia
+            * `ZW` - Zimbabwe
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        metadata:
+          readOnly: true
+          nullable: true
+      required:
+      - city
+      - country
+      - created_at
+      - line1
+      - metadata
+      - postal_code
+      - state
+      - updated_at
+    AuthToken:
+      type: object
+      properties:
+        username:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+        token:
+          type: string
+          readOnly: true
+      required:
+      - password
+      - token
+      - username
+    BlankEnum:
+      enum:
+      - ''
+    CountriesEnum:
+      enum:
+      - AF
+      - AX
+      - AL
+      - DZ
+      - AS
+      - AD
+      - AO
+      - AI
+      - AQ
+      - AG
+      - AR
+      - AM
+      - AW
+      - AU
+      - AT
+      - AZ
+      - BS
+      - BH
+      - BD
+      - BB
+      - BY
+      - BE
+      - BZ
+      - BJ
+      - BM
+      - BT
+      - BO
+      - BQ
+      - BA
+      - BW
+      - BV
+      - BR
+      - IO
+      - BN
+      - BG
+      - BF
+      - BI
+      - CV
+      - KH
+      - CM
+      - CA
+      - KY
+      - CF
+      - TD
+      - CL
+      - CN
+      - CX
+      - CC
+      - CO
+      - KM
+      - CG
+      - CD
+      - CK
+      - CR
+      - CI
+      - HR
+      - CU
+      - CW
+      - CY
+      - CZ
+      - DK
+      - DJ
+      - DM
+      - DO
+      - EC
+      - EG
+      - SV
+      - GQ
+      - ER
+      - EE
+      - SZ
+      - ET
+      - FK
+      - FO
+      - FJ
+      - FI
+      - FR
+      - GF
+      - PF
+      - TF
+      - GA
+      - GM
+      - GE
+      - DE
+      - GH
+      - GI
+      - GR
+      - GL
+      - GD
+      - GP
+      - GU
+      - GT
+      - GG
+      - GN
+      - GW
+      - GY
+      - HT
+      - HM
+      - VA
+      - HN
+      - HK
+      - HU
+      - IS
+      - IN
+      - ID
+      - IR
+      - IQ
+      - IE
+      - IM
+      - IL
+      - IT
+      - JM
+      - JP
+      - JE
+      - JO
+      - KZ
+      - KE
+      - KI
+      - KW
+      - KG
+      - LA
+      - LV
+      - LB
+      - LS
+      - LR
+      - LY
+      - LI
+      - LT
+      - LU
+      - MO
+      - MG
+      - MW
+      - MY
+      - MV
+      - ML
+      - MT
+      - MH
+      - MQ
+      - MR
+      - MU
+      - YT
+      - MX
+      - FM
+      - MD
+      - MC
+      - MN
+      - ME
+      - MS
+      - MA
+      - MZ
+      - MM
+      - NA
+      - NR
+      - NP
+      - NL
+      - NC
+      - NZ
+      - NI
+      - NE
+      - NG
+      - NU
+      - NF
+      - KP
+      - MK
+      - MP
+      - 'NO'
+      - OM
+      - PK
+      - PW
+      - PS
+      - PA
+      - PG
+      - PY
+      - PE
+      - PH
+      - PN
+      - PL
+      - PT
+      - PR
+      - QA
+      - RE
+      - RO
+      - RU
+      - RW
+      - BL
+      - SH
+      - KN
+      - LC
+      - MF
+      - PM
+      - VC
+      - WS
+      - SM
+      - ST
+      - SA
+      - SN
+      - RS
+      - SC
+      - SL
+      - SG
+      - SX
+      - SK
+      - SI
+      - SB
+      - SO
+      - ZA
+      - GS
+      - KR
+      - SS
+      - ES
+      - LK
+      - SD
+      - SR
+      - SJ
+      - SE
+      - CH
+      - SY
+      - TW
+      - TJ
+      - TZ
+      - TH
+      - TL
+      - TG
+      - TK
+      - TO
+      - TT
+      - TN
+      - TR
+      - TM
+      - TC
+      - TV
+      - UG
+      - UA
+      - AE
+      - GB
+      - UM
+      - US
+      - UY
+      - UZ
+      - VU
+      - VE
+      - VN
+      - VG
+      - VI
+      - WF
+      - EH
+      - YE
+      - ZM
+      - ZW
+      type: string
+      description: |-
+        * `AF` - Afghanistan
+        * `AX` - Åland Islands
+        * `AL` - Albania
+        * `DZ` - Algeria
+        * `AS` - American Samoa
+        * `AD` - Andorra
+        * `AO` - Angola
+        * `AI` - Anguilla
+        * `AQ` - Antarctica
+        * `AG` - Antigua and Barbuda
+        * `AR` - Argentina
+        * `AM` - Armenia
+        * `AW` - Aruba
+        * `AU` - Australia
+        * `AT` - Austria
+        * `AZ` - Azerbaijan
+        * `BS` - Bahamas
+        * `BH` - Bahrain
+        * `BD` - Bangladesh
+        * `BB` - Barbados
+        * `BY` - Belarus
+        * `BE` - Belgium
+        * `BZ` - Belize
+        * `BJ` - Benin
+        * `BM` - Bermuda
+        * `BT` - Bhutan
+        * `BO` - Bolivia
+        * `BQ` - Bonaire, Sint Eustatius and Saba
+        * `BA` - Bosnia and Herzegovina
+        * `BW` - Botswana
+        * `BV` - Bouvet Island
+        * `BR` - Brazil
+        * `IO` - British Indian Ocean Territory
+        * `BN` - Brunei
+        * `BG` - Bulgaria
+        * `BF` - Burkina Faso
+        * `BI` - Burundi
+        * `CV` - Cabo Verde
+        * `KH` - Cambodia
+        * `CM` - Cameroon
+        * `CA` - Canada
+        * `KY` - Cayman Islands
+        * `CF` - Central African Republic
+        * `TD` - Chad
+        * `CL` - Chile
+        * `CN` - China
+        * `CX` - Christmas Island
+        * `CC` - Cocos (Keeling) Islands
+        * `CO` - Colombia
+        * `KM` - Comoros
+        * `CG` - Congo
+        * `CD` - Congo (the Democratic Republic of the)
+        * `CK` - Cook Islands
+        * `CR` - Costa Rica
+        * `CI` - Côte d'Ivoire
+        * `HR` - Croatia
+        * `CU` - Cuba
+        * `CW` - Curaçao
+        * `CY` - Cyprus
+        * `CZ` - Czechia
+        * `DK` - Denmark
+        * `DJ` - Djibouti
+        * `DM` - Dominica
+        * `DO` - Dominican Republic
+        * `EC` - Ecuador
+        * `EG` - Egypt
+        * `SV` - El Salvador
+        * `GQ` - Equatorial Guinea
+        * `ER` - Eritrea
+        * `EE` - Estonia
+        * `SZ` - Eswatini
+        * `ET` - Ethiopia
+        * `FK` - Falkland Islands (Malvinas)
+        * `FO` - Faroe Islands
+        * `FJ` - Fiji
+        * `FI` - Finland
+        * `FR` - France
+        * `GF` - French Guiana
+        * `PF` - French Polynesia
+        * `TF` - French Southern Territories
+        * `GA` - Gabon
+        * `GM` - Gambia
+        * `GE` - Georgia
+        * `DE` - Germany
+        * `GH` - Ghana
+        * `GI` - Gibraltar
+        * `GR` - Greece
+        * `GL` - Greenland
+        * `GD` - Grenada
+        * `GP` - Guadeloupe
+        * `GU` - Guam
+        * `GT` - Guatemala
+        * `GG` - Guernsey
+        * `GN` - Guinea
+        * `GW` - Guinea-Bissau
+        * `GY` - Guyana
+        * `HT` - Haiti
+        * `HM` - Heard Island and McDonald Islands
+        * `VA` - Holy See
+        * `HN` - Honduras
+        * `HK` - Hong Kong
+        * `HU` - Hungary
+        * `IS` - Iceland
+        * `IN` - India
+        * `ID` - Indonesia
+        * `IR` - Iran
+        * `IQ` - Iraq
+        * `IE` - Ireland
+        * `IM` - Isle of Man
+        * `IL` - Israel
+        * `IT` - Italy
+        * `JM` - Jamaica
+        * `JP` - Japan
+        * `JE` - Jersey
+        * `JO` - Jordan
+        * `KZ` - Kazakhstan
+        * `KE` - Kenya
+        * `KI` - Kiribati
+        * `KW` - Kuwait
+        * `KG` - Kyrgyzstan
+        * `LA` - Laos
+        * `LV` - Latvia
+        * `LB` - Lebanon
+        * `LS` - Lesotho
+        * `LR` - Liberia
+        * `LY` - Libya
+        * `LI` - Liechtenstein
+        * `LT` - Lithuania
+        * `LU` - Luxembourg
+        * `MO` - Macao
+        * `MG` - Madagascar
+        * `MW` - Malawi
+        * `MY` - Malaysia
+        * `MV` - Maldives
+        * `ML` - Mali
+        * `MT` - Malta
+        * `MH` - Marshall Islands
+        * `MQ` - Martinique
+        * `MR` - Mauritania
+        * `MU` - Mauritius
+        * `YT` - Mayotte
+        * `MX` - Mexico
+        * `FM` - Micronesia
+        * `MD` - Moldova
+        * `MC` - Monaco
+        * `MN` - Mongolia
+        * `ME` - Montenegro
+        * `MS` - Montserrat
+        * `MA` - Morocco
+        * `MZ` - Mozambique
+        * `MM` - Myanmar
+        * `NA` - Namibia
+        * `NR` - Nauru
+        * `NP` - Nepal
+        * `NL` - Netherlands
+        * `NC` - New Caledonia
+        * `NZ` - New Zealand
+        * `NI` - Nicaragua
+        * `NE` - Niger
+        * `NG` - Nigeria
+        * `NU` - Niue
+        * `NF` - Norfolk Island
+        * `KP` - North Korea
+        * `MK` - North Macedonia
+        * `MP` - Northern Mariana Islands
+        * `NO` - Norway
+        * `OM` - Oman
+        * `PK` - Pakistan
+        * `PW` - Palau
+        * `PS` - Palestine, State of
+        * `PA` - Panama
+        * `PG` - Papua New Guinea
+        * `PY` - Paraguay
+        * `PE` - Peru
+        * `PH` - Philippines
+        * `PN` - Pitcairn
+        * `PL` - Poland
+        * `PT` - Portugal
+        * `PR` - Puerto Rico
+        * `QA` - Qatar
+        * `RE` - Réunion
+        * `RO` - Romania
+        * `RU` - Russia
+        * `RW` - Rwanda
+        * `BL` - Saint Barthélemy
+        * `SH` - Saint Helena, Ascension and Tristan da Cunha
+        * `KN` - Saint Kitts and Nevis
+        * `LC` - Saint Lucia
+        * `MF` - Saint Martin (French part)
+        * `PM` - Saint Pierre and Miquelon
+        * `VC` - Saint Vincent and the Grenadines
+        * `WS` - Samoa
+        * `SM` - San Marino
+        * `ST` - Sao Tome and Principe
+        * `SA` - Saudi Arabia
+        * `SN` - Senegal
+        * `RS` - Serbia
+        * `SC` - Seychelles
+        * `SL` - Sierra Leone
+        * `SG` - Singapore
+        * `SX` - Sint Maarten (Dutch part)
+        * `SK` - Slovakia
+        * `SI` - Slovenia
+        * `SB` - Solomon Islands
+        * `SO` - Somalia
+        * `ZA` - South Africa
+        * `GS` - South Georgia and the South Sandwich Islands
+        * `KR` - South Korea
+        * `SS` - South Sudan
+        * `ES` - Spain
+        * `LK` - Sri Lanka
+        * `SD` - Sudan
+        * `SR` - Suriname
+        * `SJ` - Svalbard and Jan Mayen
+        * `SE` - Sweden
+        * `CH` - Switzerland
+        * `SY` - Syria
+        * `TW` - Taiwan
+        * `TJ` - Tajikistan
+        * `TZ` - Tanzania
+        * `TH` - Thailand
+        * `TL` - Timor-Leste
+        * `TG` - Togo
+        * `TK` - Tokelau
+        * `TO` - Tonga
+        * `TT` - Trinidad and Tobago
+        * `TN` - Tunisia
+        * `TR` - Türkiye
+        * `TM` - Turkmenistan
+        * `TC` - Turks and Caicos Islands
+        * `TV` - Tuvalu
+        * `UG` - Uganda
+        * `UA` - Ukraine
+        * `AE` - United Arab Emirates
+        * `GB` - United Kingdom
+        * `UM` - United States Minor Outlying Islands
+        * `US` - United States of America
+        * `UY` - Uruguay
+        * `UZ` - Uzbekistan
+        * `VU` - Vanuatu
+        * `VE` - Venezuela
+        * `VN` - Vietnam
+        * `VG` - Virgin Islands (British)
+        * `VI` - Virgin Islands (U.S.)
+        * `WF` - Wallis and Futuna
+        * `EH` - Western Sahara
+        * `YE` - Yemen
+        * `ZM` - Zambia
+        * `ZW` - Zimbabwe
+    CountryEnum:
+      enum:
+      - AF
+      - AX
+      - AL
+      - DZ
+      - AS
+      - AD
+      - AO
+      - AI
+      - AQ
+      - AG
+      - AR
+      - AM
+      - AW
+      - AU
+      - AT
+      - AZ
+      - BS
+      - BH
+      - BD
+      - BB
+      - BY
+      - BE
+      - BZ
+      - BJ
+      - BM
+      - BT
+      - BO
+      - BQ
+      - BA
+      - BW
+      - BV
+      - BR
+      - IO
+      - BN
+      - BG
+      - BF
+      - BI
+      - CV
+      - KH
+      - CM
+      - CA
+      - KY
+      - CF
+      - TD
+      - CL
+      - CN
+      - CX
+      - CC
+      - CO
+      - KM
+      - CG
+      - CD
+      - CK
+      - CR
+      - CI
+      - HR
+      - CU
+      - CW
+      - CY
+      - CZ
+      - DK
+      - DJ
+      - DM
+      - DO
+      - EC
+      - EG
+      - SV
+      - GQ
+      - ER
+      - EE
+      - SZ
+      - ET
+      - FK
+      - FO
+      - FJ
+      - FI
+      - FR
+      - GF
+      - PF
+      - TF
+      - GA
+      - GM
+      - GE
+      - DE
+      - GH
+      - GI
+      - GR
+      - GL
+      - GD
+      - GP
+      - GU
+      - GT
+      - GG
+      - GN
+      - GW
+      - GY
+      - HT
+      - HM
+      - VA
+      - HN
+      - HK
+      - HU
+      - IS
+      - IN
+      - ID
+      - IR
+      - IQ
+      - IE
+      - IM
+      - IL
+      - IT
+      - JM
+      - JP
+      - JE
+      - JO
+      - KZ
+      - KE
+      - KI
+      - KW
+      - KG
+      - LA
+      - LV
+      - LB
+      - LS
+      - LR
+      - LY
+      - LI
+      - LT
+      - LU
+      - MO
+      - MG
+      - MW
+      - MY
+      - MV
+      - ML
+      - MT
+      - MH
+      - MQ
+      - MR
+      - MU
+      - YT
+      - MX
+      - FM
+      - MD
+      - MC
+      - MN
+      - ME
+      - MS
+      - MA
+      - MZ
+      - MM
+      - NA
+      - NR
+      - NP
+      - NL
+      - NC
+      - NZ
+      - NI
+      - NE
+      - NG
+      - NU
+      - NF
+      - KP
+      - MK
+      - MP
+      - 'NO'
+      - OM
+      - PK
+      - PW
+      - PS
+      - PA
+      - PG
+      - PY
+      - PE
+      - PH
+      - PN
+      - PL
+      - PT
+      - PR
+      - QA
+      - RE
+      - RO
+      - RU
+      - RW
+      - BL
+      - SH
+      - KN
+      - LC
+      - MF
+      - PM
+      - VC
+      - WS
+      - SM
+      - ST
+      - SA
+      - SN
+      - RS
+      - SC
+      - SL
+      - SG
+      - SX
+      - SK
+      - SI
+      - SB
+      - SO
+      - ZA
+      - GS
+      - KR
+      - SS
+      - ES
+      - LK
+      - SD
+      - SR
+      - SJ
+      - SE
+      - CH
+      - SY
+      - TW
+      - TJ
+      - TZ
+      - TH
+      - TL
+      - TG
+      - TK
+      - TO
+      - TT
+      - TN
+      - TR
+      - TM
+      - TC
+      - TV
+      - UG
+      - UA
+      - AE
+      - GB
+      - UM
+      - US
+      - UY
+      - UZ
+      - VU
+      - VE
+      - VN
+      - VG
+      - VI
+      - WF
+      - EH
+      - YE
+      - ZM
+      - ZW
+      type: string
+      description: |-
+        * `AF` - Afghanistan
+        * `AX` - Åland Islands
+        * `AL` - Albania
+        * `DZ` - Algeria
+        * `AS` - American Samoa
+        * `AD` - Andorra
+        * `AO` - Angola
+        * `AI` - Anguilla
+        * `AQ` - Antarctica
+        * `AG` - Antigua and Barbuda
+        * `AR` - Argentina
+        * `AM` - Armenia
+        * `AW` - Aruba
+        * `AU` - Australia
+        * `AT` - Austria
+        * `AZ` - Azerbaijan
+        * `BS` - Bahamas
+        * `BH` - Bahrain
+        * `BD` - Bangladesh
+        * `BB` - Barbados
+        * `BY` - Belarus
+        * `BE` - Belgium
+        * `BZ` - Belize
+        * `BJ` - Benin
+        * `BM` - Bermuda
+        * `BT` - Bhutan
+        * `BO` - Bolivia
+        * `BQ` - Bonaire, Sint Eustatius and Saba
+        * `BA` - Bosnia and Herzegovina
+        * `BW` - Botswana
+        * `BV` - Bouvet Island
+        * `BR` - Brazil
+        * `IO` - British Indian Ocean Territory
+        * `BN` - Brunei
+        * `BG` - Bulgaria
+        * `BF` - Burkina Faso
+        * `BI` - Burundi
+        * `CV` - Cabo Verde
+        * `KH` - Cambodia
+        * `CM` - Cameroon
+        * `CA` - Canada
+        * `KY` - Cayman Islands
+        * `CF` - Central African Republic
+        * `TD` - Chad
+        * `CL` - Chile
+        * `CN` - China
+        * `CX` - Christmas Island
+        * `CC` - Cocos (Keeling) Islands
+        * `CO` - Colombia
+        * `KM` - Comoros
+        * `CG` - Congo
+        * `CD` - Congo (the Democratic Republic of the)
+        * `CK` - Cook Islands
+        * `CR` - Costa Rica
+        * `CI` - Côte d'Ivoire
+        * `HR` - Croatia
+        * `CU` - Cuba
+        * `CW` - Curaçao
+        * `CY` - Cyprus
+        * `CZ` - Czechia
+        * `DK` - Denmark
+        * `DJ` - Djibouti
+        * `DM` - Dominica
+        * `DO` - Dominican Republic
+        * `EC` - Ecuador
+        * `EG` - Egypt
+        * `SV` - El Salvador
+        * `GQ` - Equatorial Guinea
+        * `ER` - Eritrea
+        * `EE` - Estonia
+        * `SZ` - Eswatini
+        * `ET` - Ethiopia
+        * `FK` - Falkland Islands (Malvinas)
+        * `FO` - Faroe Islands
+        * `FJ` - Fiji
+        * `FI` - Finland
+        * `FR` - France
+        * `GF` - French Guiana
+        * `PF` - French Polynesia
+        * `TF` - French Southern Territories
+        * `GA` - Gabon
+        * `GM` - Gambia
+        * `GE` - Georgia
+        * `DE` - Germany
+        * `GH` - Ghana
+        * `GI` - Gibraltar
+        * `GR` - Greece
+        * `GL` - Greenland
+        * `GD` - Grenada
+        * `GP` - Guadeloupe
+        * `GU` - Guam
+        * `GT` - Guatemala
+        * `GG` - Guernsey
+        * `GN` - Guinea
+        * `GW` - Guinea-Bissau
+        * `GY` - Guyana
+        * `HT` - Haiti
+        * `HM` - Heard Island and McDonald Islands
+        * `VA` - Holy See
+        * `HN` - Honduras
+        * `HK` - Hong Kong
+        * `HU` - Hungary
+        * `IS` - Iceland
+        * `IN` - India
+        * `ID` - Indonesia
+        * `IR` - Iran
+        * `IQ` - Iraq
+        * `IE` - Ireland
+        * `IM` - Isle of Man
+        * `IL` - Israel
+        * `IT` - Italy
+        * `JM` - Jamaica
+        * `JP` - Japan
+        * `JE` - Jersey
+        * `JO` - Jordan
+        * `KZ` - Kazakhstan
+        * `KE` - Kenya
+        * `KI` - Kiribati
+        * `KW` - Kuwait
+        * `KG` - Kyrgyzstan
+        * `LA` - Laos
+        * `LV` - Latvia
+        * `LB` - Lebanon
+        * `LS` - Lesotho
+        * `LR` - Liberia
+        * `LY` - Libya
+        * `LI` - Liechtenstein
+        * `LT` - Lithuania
+        * `LU` - Luxembourg
+        * `MO` - Macao
+        * `MG` - Madagascar
+        * `MW` - Malawi
+        * `MY` - Malaysia
+        * `MV` - Maldives
+        * `ML` - Mali
+        * `MT` - Malta
+        * `MH` - Marshall Islands
+        * `MQ` - Martinique
+        * `MR` - Mauritania
+        * `MU` - Mauritius
+        * `YT` - Mayotte
+        * `MX` - Mexico
+        * `FM` - Micronesia
+        * `MD` - Moldova
+        * `MC` - Monaco
+        * `MN` - Mongolia
+        * `ME` - Montenegro
+        * `MS` - Montserrat
+        * `MA` - Morocco
+        * `MZ` - Mozambique
+        * `MM` - Myanmar
+        * `NA` - Namibia
+        * `NR` - Nauru
+        * `NP` - Nepal
+        * `NL` - Netherlands
+        * `NC` - New Caledonia
+        * `NZ` - New Zealand
+        * `NI` - Nicaragua
+        * `NE` - Niger
+        * `NG` - Nigeria
+        * `NU` - Niue
+        * `NF` - Norfolk Island
+        * `KP` - North Korea
+        * `MK` - North Macedonia
+        * `MP` - Northern Mariana Islands
+        * `NO` - Norway
+        * `OM` - Oman
+        * `PK` - Pakistan
+        * `PW` - Palau
+        * `PS` - Palestine, State of
+        * `PA` - Panama
+        * `PG` - Papua New Guinea
+        * `PY` - Paraguay
+        * `PE` - Peru
+        * `PH` - Philippines
+        * `PN` - Pitcairn
+        * `PL` - Poland
+        * `PT` - Portugal
+        * `PR` - Puerto Rico
+        * `QA` - Qatar
+        * `RE` - Réunion
+        * `RO` - Romania
+        * `RU` - Russia
+        * `RW` - Rwanda
+        * `BL` - Saint Barthélemy
+        * `SH` - Saint Helena, Ascension and Tristan da Cunha
+        * `KN` - Saint Kitts and Nevis
+        * `LC` - Saint Lucia
+        * `MF` - Saint Martin (French part)
+        * `PM` - Saint Pierre and Miquelon
+        * `VC` - Saint Vincent and the Grenadines
+        * `WS` - Samoa
+        * `SM` - San Marino
+        * `ST` - Sao Tome and Principe
+        * `SA` - Saudi Arabia
+        * `SN` - Senegal
+        * `RS` - Serbia
+        * `SC` - Seychelles
+        * `SL` - Sierra Leone
+        * `SG` - Singapore
+        * `SX` - Sint Maarten (Dutch part)
+        * `SK` - Slovakia
+        * `SI` - Slovenia
+        * `SB` - Solomon Islands
+        * `SO` - Somalia
+        * `ZA` - South Africa
+        * `GS` - South Georgia and the South Sandwich Islands
+        * `KR` - South Korea
+        * `SS` - South Sudan
+        * `ES` - Spain
+        * `LK` - Sri Lanka
+        * `SD` - Sudan
+        * `SR` - Suriname
+        * `SJ` - Svalbard and Jan Mayen
+        * `SE` - Sweden
+        * `CH` - Switzerland
+        * `SY` - Syria
+        * `TW` - Taiwan
+        * `TJ` - Tajikistan
+        * `TZ` - Tanzania
+        * `TH` - Thailand
+        * `TL` - Timor-Leste
+        * `TG` - Togo
+        * `TK` - Tokelau
+        * `TO` - Tonga
+        * `TT` - Trinidad and Tobago
+        * `TN` - Tunisia
+        * `TR` - Türkiye
+        * `TM` - Turkmenistan
+        * `TC` - Turks and Caicos Islands
+        * `TV` - Tuvalu
+        * `UG` - Uganda
+        * `UA` - Ukraine
+        * `AE` - United Arab Emirates
+        * `GB` - United Kingdom
+        * `UM` - United States Minor Outlying Islands
+        * `US` - United States of America
+        * `UY` - Uruguay
+        * `UZ` - Uzbekistan
+        * `VU` - Vanuatu
+        * `VE` - Venezuela
+        * `VN` - Vietnam
+        * `VG` - Virgin Islands (British)
+        * `VI` - Virgin Islands (U.S.)
+        * `WF` - Wallis and Futuna
+        * `EH` - Western Sahara
+        * `YE` - Yemen
+        * `ZM` - Zambia
+        * `ZW` - Zimbabwe
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Detailed error message (e.g. 'Invalid card number provided')
+        code:
+          type: string
+          description: Error code (e.g. 'invalid_card_number')
+          maxLength: 255
+        param:
+          type: string
+          description: Parameter that caused the error (e.g. 'card_number')
+          maxLength: 255
+        reason:
+          type: string
+          description: Reason for the error (e.g. 'Card number validation failed')
+          maxLength: 255
+        reason_details:
+          type: string
+          nullable: true
+          description: Additional details about the reason for the error
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        metadata:
+          readOnly: true
+          nullable: true
+      required:
+      - code
+      - created_at
+      - message
+      - metadata
+      - param
+      - reason
+      - updated_at
+    GeoRegion:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the geographic region (e.g. 'Northeast US')
+          maxLength: 255
+        countries:
+          description: |-
+            List of country codes in this region (e.g. ['US', 'CA'])
+
+            * `AF` - Afghanistan
+            * `AX` - Åland Islands
+            * `AL` - Albania
+            * `DZ` - Algeria
+            * `AS` - American Samoa
+            * `AD` - Andorra
+            * `AO` - Angola
+            * `AI` - Anguilla
+            * `AQ` - Antarctica
+            * `AG` - Antigua and Barbuda
+            * `AR` - Argentina
+            * `AM` - Armenia
+            * `AW` - Aruba
+            * `AU` - Australia
+            * `AT` - Austria
+            * `AZ` - Azerbaijan
+            * `BS` - Bahamas
+            * `BH` - Bahrain
+            * `BD` - Bangladesh
+            * `BB` - Barbados
+            * `BY` - Belarus
+            * `BE` - Belgium
+            * `BZ` - Belize
+            * `BJ` - Benin
+            * `BM` - Bermuda
+            * `BT` - Bhutan
+            * `BO` - Bolivia
+            * `BQ` - Bonaire, Sint Eustatius and Saba
+            * `BA` - Bosnia and Herzegovina
+            * `BW` - Botswana
+            * `BV` - Bouvet Island
+            * `BR` - Brazil
+            * `IO` - British Indian Ocean Territory
+            * `BN` - Brunei
+            * `BG` - Bulgaria
+            * `BF` - Burkina Faso
+            * `BI` - Burundi
+            * `CV` - Cabo Verde
+            * `KH` - Cambodia
+            * `CM` - Cameroon
+            * `CA` - Canada
+            * `KY` - Cayman Islands
+            * `CF` - Central African Republic
+            * `TD` - Chad
+            * `CL` - Chile
+            * `CN` - China
+            * `CX` - Christmas Island
+            * `CC` - Cocos (Keeling) Islands
+            * `CO` - Colombia
+            * `KM` - Comoros
+            * `CG` - Congo
+            * `CD` - Congo (the Democratic Republic of the)
+            * `CK` - Cook Islands
+            * `CR` - Costa Rica
+            * `CI` - Côte d'Ivoire
+            * `HR` - Croatia
+            * `CU` - Cuba
+            * `CW` - Curaçao
+            * `CY` - Cyprus
+            * `CZ` - Czechia
+            * `DK` - Denmark
+            * `DJ` - Djibouti
+            * `DM` - Dominica
+            * `DO` - Dominican Republic
+            * `EC` - Ecuador
+            * `EG` - Egypt
+            * `SV` - El Salvador
+            * `GQ` - Equatorial Guinea
+            * `ER` - Eritrea
+            * `EE` - Estonia
+            * `SZ` - Eswatini
+            * `ET` - Ethiopia
+            * `FK` - Falkland Islands (Malvinas)
+            * `FO` - Faroe Islands
+            * `FJ` - Fiji
+            * `FI` - Finland
+            * `FR` - France
+            * `GF` - French Guiana
+            * `PF` - French Polynesia
+            * `TF` - French Southern Territories
+            * `GA` - Gabon
+            * `GM` - Gambia
+            * `GE` - Georgia
+            * `DE` - Germany
+            * `GH` - Ghana
+            * `GI` - Gibraltar
+            * `GR` - Greece
+            * `GL` - Greenland
+            * `GD` - Grenada
+            * `GP` - Guadeloupe
+            * `GU` - Guam
+            * `GT` - Guatemala
+            * `GG` - Guernsey
+            * `GN` - Guinea
+            * `GW` - Guinea-Bissau
+            * `GY` - Guyana
+            * `HT` - Haiti
+            * `HM` - Heard Island and McDonald Islands
+            * `VA` - Holy See
+            * `HN` - Honduras
+            * `HK` - Hong Kong
+            * `HU` - Hungary
+            * `IS` - Iceland
+            * `IN` - India
+            * `ID` - Indonesia
+            * `IR` - Iran
+            * `IQ` - Iraq
+            * `IE` - Ireland
+            * `IM` - Isle of Man
+            * `IL` - Israel
+            * `IT` - Italy
+            * `JM` - Jamaica
+            * `JP` - Japan
+            * `JE` - Jersey
+            * `JO` - Jordan
+            * `KZ` - Kazakhstan
+            * `KE` - Kenya
+            * `KI` - Kiribati
+            * `KW` - Kuwait
+            * `KG` - Kyrgyzstan
+            * `LA` - Laos
+            * `LV` - Latvia
+            * `LB` - Lebanon
+            * `LS` - Lesotho
+            * `LR` - Liberia
+            * `LY` - Libya
+            * `LI` - Liechtenstein
+            * `LT` - Lithuania
+            * `LU` - Luxembourg
+            * `MO` - Macao
+            * `MG` - Madagascar
+            * `MW` - Malawi
+            * `MY` - Malaysia
+            * `MV` - Maldives
+            * `ML` - Mali
+            * `MT` - Malta
+            * `MH` - Marshall Islands
+            * `MQ` - Martinique
+            * `MR` - Mauritania
+            * `MU` - Mauritius
+            * `YT` - Mayotte
+            * `MX` - Mexico
+            * `FM` - Micronesia
+            * `MD` - Moldova
+            * `MC` - Monaco
+            * `MN` - Mongolia
+            * `ME` - Montenegro
+            * `MS` - Montserrat
+            * `MA` - Morocco
+            * `MZ` - Mozambique
+            * `MM` - Myanmar
+            * `NA` - Namibia
+            * `NR` - Nauru
+            * `NP` - Nepal
+            * `NL` - Netherlands
+            * `NC` - New Caledonia
+            * `NZ` - New Zealand
+            * `NI` - Nicaragua
+            * `NE` - Niger
+            * `NG` - Nigeria
+            * `NU` - Niue
+            * `NF` - Norfolk Island
+            * `KP` - North Korea
+            * `MK` - North Macedonia
+            * `MP` - Northern Mariana Islands
+            * `NO` - Norway
+            * `OM` - Oman
+            * `PK` - Pakistan
+            * `PW` - Palau
+            * `PS` - Palestine, State of
+            * `PA` - Panama
+            * `PG` - Papua New Guinea
+            * `PY` - Paraguay
+            * `PE` - Peru
+            * `PH` - Philippines
+            * `PN` - Pitcairn
+            * `PL` - Poland
+            * `PT` - Portugal
+            * `PR` - Puerto Rico
+            * `QA` - Qatar
+            * `RE` - Réunion
+            * `RO` - Romania
+            * `RU` - Russia
+            * `RW` - Rwanda
+            * `BL` - Saint Barthélemy
+            * `SH` - Saint Helena, Ascension and Tristan da Cunha
+            * `KN` - Saint Kitts and Nevis
+            * `LC` - Saint Lucia
+            * `MF` - Saint Martin (French part)
+            * `PM` - Saint Pierre and Miquelon
+            * `VC` - Saint Vincent and the Grenadines
+            * `WS` - Samoa
+            * `SM` - San Marino
+            * `ST` - Sao Tome and Principe
+            * `SA` - Saudi Arabia
+            * `SN` - Senegal
+            * `RS` - Serbia
+            * `SC` - Seychelles
+            * `SL` - Sierra Leone
+            * `SG` - Singapore
+            * `SX` - Sint Maarten (Dutch part)
+            * `SK` - Slovakia
+            * `SI` - Slovenia
+            * `SB` - Solomon Islands
+            * `SO` - Somalia
+            * `ZA` - South Africa
+            * `GS` - South Georgia and the South Sandwich Islands
+            * `KR` - South Korea
+            * `SS` - South Sudan
+            * `ES` - Spain
+            * `LK` - Sri Lanka
+            * `SD` - Sudan
+            * `SR` - Suriname
+            * `SJ` - Svalbard and Jan Mayen
+            * `SE` - Sweden
+            * `CH` - Switzerland
+            * `SY` - Syria
+            * `TW` - Taiwan
+            * `TJ` - Tajikistan
+            * `TZ` - Tanzania
+            * `TH` - Thailand
+            * `TL` - Timor-Leste
+            * `TG` - Togo
+            * `TK` - Tokelau
+            * `TO` - Tonga
+            * `TT` - Trinidad and Tobago
+            * `TN` - Tunisia
+            * `TR` - Türkiye
+            * `TM` - Turkmenistan
+            * `TC` - Turks and Caicos Islands
+            * `TV` - Tuvalu
+            * `UG` - Uganda
+            * `UA` - Ukraine
+            * `AE` - United Arab Emirates
+            * `GB` - United Kingdom
+            * `UM` - United States Minor Outlying Islands
+            * `US` - United States of America
+            * `UY` - Uruguay
+            * `UZ` - Uzbekistan
+            * `VU` - Vanuatu
+            * `VE` - Venezuela
+            * `VN` - Vietnam
+            * `VG` - Virgin Islands (British)
+            * `VI` - Virgin Islands (U.S.)
+            * `WF` - Wallis and Futuna
+            * `EH` - Western Sahara
+            * `YE` - Yemen
+            * `ZM` - Zambia
+            * `ZW` - Zimbabwe
+          oneOf:
+          - $ref: '#/components/schemas/CountriesEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+        cities:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: Cities included in this region
+        postal_codes:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: Postal codes included in this region
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        metadata:
+          readOnly: true
+          nullable: true
+      required:
+      - created_at
+      - metadata
+      - name
+      - updated_at
+    Order:
+      type: object
+      properties:
+        order_number:
+          type: string
+          description: Unique order identifier
+          maxLength: 20
+        status:
+          allOf:
+          - $ref: '#/components/schemas/OrderStatusEnum'
+          readOnly: true
+          description: |-
+            Current status of the order
+
+            * `draft` - Draft
+            * `pending_payment` - Pending Payment
+            * `confirmed` - Confirmed
+            * `completed` - Completed
+            * `cancelled` - Cancelled
+            * `disputed` - Disputed
+        price:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: Price of the order
+        shipping_surcharge:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: Surcharge of the shipping
+        options_surcharge:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: Surcharge of the selected options
+        marketplace_commission_amount:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: Fee of the marketplace commission
+        customer:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Customer who placed the order
+        shipping_address:
+          type: string
+          format: uuid
+          description: Shipping address for the order
+        billing_address:
+          type: string
+          format: uuid
+          description: Billing address for the order
+        order_lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderLine'
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        metadata:
+          readOnly: true
+          nullable: true
+      required:
+      - billing_address
+      - created_at
+      - customer
+      - marketplace_commission_amount
+      - metadata
+      - options_surcharge
+      - order_lines
+      - price
+      - shipping_address
+      - shipping_surcharge
+      - status
+      - updated_at
+    OrderLine:
+      type: object
+      properties:
+        stock_record:
+          type: string
+          format: uuid
+          description: Stock record for the ordered product
+        quantity:
+          type: integer
+          maximum: 32767
+          minimum: 0
+          description: Quantity ordered
+        selected_options:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: Product options selected for this line item
+        price:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: Price of the order line
+        options_surcharge:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: Surcharge of the selected options
+        status:
+          allOf:
+          - $ref: '#/components/schemas/OrderLineStatusEnum'
+          description: |-
+            Current status of the order line
+
+            * `draft` - Draft
+            * `failed` - Failed
+            * `completed` - Completed
+            * `disputed` - Disputed
+        order:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Parent order
+        store_order:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Associated store order
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        metadata:
+          readOnly: true
+          nullable: true
+      required:
+      - created_at
+      - metadata
+      - options_surcharge
+      - order
+      - price
+      - selected_options
+      - stock_record
+      - store_order
+      - updated_at
+    OrderLineStatusEnum:
+      enum:
+      - draft
+      - failed
+      - completed
+      - disputed
+      type: string
+      description: |-
+        * `draft` - Draft
+        * `failed` - Failed
+        * `completed` - Completed
+        * `disputed` - Disputed
+    OrderStatusEnum:
+      enum:
+      - draft
+      - pending_payment
+      - confirmed
+      - completed
+      - cancelled
+      - disputed
+      type: string
+      description: |-
+        * `draft` - Draft
+        * `pending_payment` - Pending Payment
+        * `confirmed` - Confirmed
+        * `completed` - Completed
+        * `cancelled` - Cancelled
+        * `disputed` - Disputed
+    PatchedAddress:
+      type: object
+      properties:
+        line1:
+          type: string
+          description: First line of the address (e.g. '123 Main St')
+          maxLength: 255
+        line2:
+          type: string
+          nullable: true
+          description: Second line of the address if needed (e.g. 'Apt 4B')
+          maxLength: 255
+        city:
+          type: string
+          description: City name (e.g. 'New York')
+          maxLength: 255
+        state:
+          type: string
+          description: State or province name (e.g. 'NY')
+          maxLength: 255
+        postal_code:
+          type: string
+          description: Postal or ZIP code (e.g. '10001')
+          maxLength: 255
+        country:
+          allOf:
+          - $ref: '#/components/schemas/CountryEnum'
+          description: |-
+            Two-letter country code (e.g. 'US')
+
+            * `AF` - Afghanistan
+            * `AX` - Åland Islands
+            * `AL` - Albania
+            * `DZ` - Algeria
+            * `AS` - American Samoa
+            * `AD` - Andorra
+            * `AO` - Angola
+            * `AI` - Anguilla
+            * `AQ` - Antarctica
+            * `AG` - Antigua and Barbuda
+            * `AR` - Argentina
+            * `AM` - Armenia
+            * `AW` - Aruba
+            * `AU` - Australia
+            * `AT` - Austria
+            * `AZ` - Azerbaijan
+            * `BS` - Bahamas
+            * `BH` - Bahrain
+            * `BD` - Bangladesh
+            * `BB` - Barbados
+            * `BY` - Belarus
+            * `BE` - Belgium
+            * `BZ` - Belize
+            * `BJ` - Benin
+            * `BM` - Bermuda
+            * `BT` - Bhutan
+            * `BO` - Bolivia
+            * `BQ` - Bonaire, Sint Eustatius and Saba
+            * `BA` - Bosnia and Herzegovina
+            * `BW` - Botswana
+            * `BV` - Bouvet Island
+            * `BR` - Brazil
+            * `IO` - British Indian Ocean Territory
+            * `BN` - Brunei
+            * `BG` - Bulgaria
+            * `BF` - Burkina Faso
+            * `BI` - Burundi
+            * `CV` - Cabo Verde
+            * `KH` - Cambodia
+            * `CM` - Cameroon
+            * `CA` - Canada
+            * `KY` - Cayman Islands
+            * `CF` - Central African Republic
+            * `TD` - Chad
+            * `CL` - Chile
+            * `CN` - China
+            * `CX` - Christmas Island
+            * `CC` - Cocos (Keeling) Islands
+            * `CO` - Colombia
+            * `KM` - Comoros
+            * `CG` - Congo
+            * `CD` - Congo (the Democratic Republic of the)
+            * `CK` - Cook Islands
+            * `CR` - Costa Rica
+            * `CI` - Côte d'Ivoire
+            * `HR` - Croatia
+            * `CU` - Cuba
+            * `CW` - Curaçao
+            * `CY` - Cyprus
+            * `CZ` - Czechia
+            * `DK` - Denmark
+            * `DJ` - Djibouti
+            * `DM` - Dominica
+            * `DO` - Dominican Republic
+            * `EC` - Ecuador
+            * `EG` - Egypt
+            * `SV` - El Salvador
+            * `GQ` - Equatorial Guinea
+            * `ER` - Eritrea
+            * `EE` - Estonia
+            * `SZ` - Eswatini
+            * `ET` - Ethiopia
+            * `FK` - Falkland Islands (Malvinas)
+            * `FO` - Faroe Islands
+            * `FJ` - Fiji
+            * `FI` - Finland
+            * `FR` - France
+            * `GF` - French Guiana
+            * `PF` - French Polynesia
+            * `TF` - French Southern Territories
+            * `GA` - Gabon
+            * `GM` - Gambia
+            * `GE` - Georgia
+            * `DE` - Germany
+            * `GH` - Ghana
+            * `GI` - Gibraltar
+            * `GR` - Greece
+            * `GL` - Greenland
+            * `GD` - Grenada
+            * `GP` - Guadeloupe
+            * `GU` - Guam
+            * `GT` - Guatemala
+            * `GG` - Guernsey
+            * `GN` - Guinea
+            * `GW` - Guinea-Bissau
+            * `GY` - Guyana
+            * `HT` - Haiti
+            * `HM` - Heard Island and McDonald Islands
+            * `VA` - Holy See
+            * `HN` - Honduras
+            * `HK` - Hong Kong
+            * `HU` - Hungary
+            * `IS` - Iceland
+            * `IN` - India
+            * `ID` - Indonesia
+            * `IR` - Iran
+            * `IQ` - Iraq
+            * `IE` - Ireland
+            * `IM` - Isle of Man
+            * `IL` - Israel
+            * `IT` - Italy
+            * `JM` - Jamaica
+            * `JP` - Japan
+            * `JE` - Jersey
+            * `JO` - Jordan
+            * `KZ` - Kazakhstan
+            * `KE` - Kenya
+            * `KI` - Kiribati
+            * `KW` - Kuwait
+            * `KG` - Kyrgyzstan
+            * `LA` - Laos
+            * `LV` - Latvia
+            * `LB` - Lebanon
+            * `LS` - Lesotho
+            * `LR` - Liberia
+            * `LY` - Libya
+            * `LI` - Liechtenstein
+            * `LT` - Lithuania
+            * `LU` - Luxembourg
+            * `MO` - Macao
+            * `MG` - Madagascar
+            * `MW` - Malawi
+            * `MY` - Malaysia
+            * `MV` - Maldives
+            * `ML` - Mali
+            * `MT` - Malta
+            * `MH` - Marshall Islands
+            * `MQ` - Martinique
+            * `MR` - Mauritania
+            * `MU` - Mauritius
+            * `YT` - Mayotte
+            * `MX` - Mexico
+            * `FM` - Micronesia
+            * `MD` - Moldova
+            * `MC` - Monaco
+            * `MN` - Mongolia
+            * `ME` - Montenegro
+            * `MS` - Montserrat
+            * `MA` - Morocco
+            * `MZ` - Mozambique
+            * `MM` - Myanmar
+            * `NA` - Namibia
+            * `NR` - Nauru
+            * `NP` - Nepal
+            * `NL` - Netherlands
+            * `NC` - New Caledonia
+            * `NZ` - New Zealand
+            * `NI` - Nicaragua
+            * `NE` - Niger
+            * `NG` - Nigeria
+            * `NU` - Niue
+            * `NF` - Norfolk Island
+            * `KP` - North Korea
+            * `MK` - North Macedonia
+            * `MP` - Northern Mariana Islands
+            * `NO` - Norway
+            * `OM` - Oman
+            * `PK` - Pakistan
+            * `PW` - Palau
+            * `PS` - Palestine, State of
+            * `PA` - Panama
+            * `PG` - Papua New Guinea
+            * `PY` - Paraguay
+            * `PE` - Peru
+            * `PH` - Philippines
+            * `PN` - Pitcairn
+            * `PL` - Poland
+            * `PT` - Portugal
+            * `PR` - Puerto Rico
+            * `QA` - Qatar
+            * `RE` - Réunion
+            * `RO` - Romania
+            * `RU` - Russia
+            * `RW` - Rwanda
+            * `BL` - Saint Barthélemy
+            * `SH` - Saint Helena, Ascension and Tristan da Cunha
+            * `KN` - Saint Kitts and Nevis
+            * `LC` - Saint Lucia
+            * `MF` - Saint Martin (French part)
+            * `PM` - Saint Pierre and Miquelon
+            * `VC` - Saint Vincent and the Grenadines
+            * `WS` - Samoa
+            * `SM` - San Marino
+            * `ST` - Sao Tome and Principe
+            * `SA` - Saudi Arabia
+            * `SN` - Senegal
+            * `RS` - Serbia
+            * `SC` - Seychelles
+            * `SL` - Sierra Leone
+            * `SG` - Singapore
+            * `SX` - Sint Maarten (Dutch part)
+            * `SK` - Slovakia
+            * `SI` - Slovenia
+            * `SB` - Solomon Islands
+            * `SO` - Somalia
+            * `ZA` - South Africa
+            * `GS` - South Georgia and the South Sandwich Islands
+            * `KR` - South Korea
+            * `SS` - South Sudan
+            * `ES` - Spain
+            * `LK` - Sri Lanka
+            * `SD` - Sudan
+            * `SR` - Suriname
+            * `SJ` - Svalbard and Jan Mayen
+            * `SE` - Sweden
+            * `CH` - Switzerland
+            * `SY` - Syria
+            * `TW` - Taiwan
+            * `TJ` - Tajikistan
+            * `TZ` - Tanzania
+            * `TH` - Thailand
+            * `TL` - Timor-Leste
+            * `TG` - Togo
+            * `TK` - Tokelau
+            * `TO` - Tonga
+            * `TT` - Trinidad and Tobago
+            * `TN` - Tunisia
+            * `TR` - Türkiye
+            * `TM` - Turkmenistan
+            * `TC` - Turks and Caicos Islands
+            * `TV` - Tuvalu
+            * `UG` - Uganda
+            * `UA` - Ukraine
+            * `AE` - United Arab Emirates
+            * `GB` - United Kingdom
+            * `UM` - United States Minor Outlying Islands
+            * `US` - United States of America
+            * `UY` - Uruguay
+            * `UZ` - Uzbekistan
+            * `VU` - Vanuatu
+            * `VE` - Venezuela
+            * `VN` - Vietnam
+            * `VG` - Virgin Islands (British)
+            * `VI` - Virgin Islands (U.S.)
+            * `WF` - Wallis and Futuna
+            * `EH` - Western Sahara
+            * `YE` - Yemen
+            * `ZM` - Zambia
+            * `ZW` - Zimbabwe
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        metadata:
+          readOnly: true
+          nullable: true
+    PatchedGeoRegion:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the geographic region (e.g. 'Northeast US')
+          maxLength: 255
+        countries:
+          description: |-
+            List of country codes in this region (e.g. ['US', 'CA'])
+
+            * `AF` - Afghanistan
+            * `AX` - Åland Islands
+            * `AL` - Albania
+            * `DZ` - Algeria
+            * `AS` - American Samoa
+            * `AD` - Andorra
+            * `AO` - Angola
+            * `AI` - Anguilla
+            * `AQ` - Antarctica
+            * `AG` - Antigua and Barbuda
+            * `AR` - Argentina
+            * `AM` - Armenia
+            * `AW` - Aruba
+            * `AU` - Australia
+            * `AT` - Austria
+            * `AZ` - Azerbaijan
+            * `BS` - Bahamas
+            * `BH` - Bahrain
+            * `BD` - Bangladesh
+            * `BB` - Barbados
+            * `BY` - Belarus
+            * `BE` - Belgium
+            * `BZ` - Belize
+            * `BJ` - Benin
+            * `BM` - Bermuda
+            * `BT` - Bhutan
+            * `BO` - Bolivia
+            * `BQ` - Bonaire, Sint Eustatius and Saba
+            * `BA` - Bosnia and Herzegovina
+            * `BW` - Botswana
+            * `BV` - Bouvet Island
+            * `BR` - Brazil
+            * `IO` - British Indian Ocean Territory
+            * `BN` - Brunei
+            * `BG` - Bulgaria
+            * `BF` - Burkina Faso
+            * `BI` - Burundi
+            * `CV` - Cabo Verde
+            * `KH` - Cambodia
+            * `CM` - Cameroon
+            * `CA` - Canada
+            * `KY` - Cayman Islands
+            * `CF` - Central African Republic
+            * `TD` - Chad
+            * `CL` - Chile
+            * `CN` - China
+            * `CX` - Christmas Island
+            * `CC` - Cocos (Keeling) Islands
+            * `CO` - Colombia
+            * `KM` - Comoros
+            * `CG` - Congo
+            * `CD` - Congo (the Democratic Republic of the)
+            * `CK` - Cook Islands
+            * `CR` - Costa Rica
+            * `CI` - Côte d'Ivoire
+            * `HR` - Croatia
+            * `CU` - Cuba
+            * `CW` - Curaçao
+            * `CY` - Cyprus
+            * `CZ` - Czechia
+            * `DK` - Denmark
+            * `DJ` - Djibouti
+            * `DM` - Dominica
+            * `DO` - Dominican Republic
+            * `EC` - Ecuador
+            * `EG` - Egypt
+            * `SV` - El Salvador
+            * `GQ` - Equatorial Guinea
+            * `ER` - Eritrea
+            * `EE` - Estonia
+            * `SZ` - Eswatini
+            * `ET` - Ethiopia
+            * `FK` - Falkland Islands (Malvinas)
+            * `FO` - Faroe Islands
+            * `FJ` - Fiji
+            * `FI` - Finland
+            * `FR` - France
+            * `GF` - French Guiana
+            * `PF` - French Polynesia
+            * `TF` - French Southern Territories
+            * `GA` - Gabon
+            * `GM` - Gambia
+            * `GE` - Georgia
+            * `DE` - Germany
+            * `GH` - Ghana
+            * `GI` - Gibraltar
+            * `GR` - Greece
+            * `GL` - Greenland
+            * `GD` - Grenada
+            * `GP` - Guadeloupe
+            * `GU` - Guam
+            * `GT` - Guatemala
+            * `GG` - Guernsey
+            * `GN` - Guinea
+            * `GW` - Guinea-Bissau
+            * `GY` - Guyana
+            * `HT` - Haiti
+            * `HM` - Heard Island and McDonald Islands
+            * `VA` - Holy See
+            * `HN` - Honduras
+            * `HK` - Hong Kong
+            * `HU` - Hungary
+            * `IS` - Iceland
+            * `IN` - India
+            * `ID` - Indonesia
+            * `IR` - Iran
+            * `IQ` - Iraq
+            * `IE` - Ireland
+            * `IM` - Isle of Man
+            * `IL` - Israel
+            * `IT` - Italy
+            * `JM` - Jamaica
+            * `JP` - Japan
+            * `JE` - Jersey
+            * `JO` - Jordan
+            * `KZ` - Kazakhstan
+            * `KE` - Kenya
+            * `KI` - Kiribati
+            * `KW` - Kuwait
+            * `KG` - Kyrgyzstan
+            * `LA` - Laos
+            * `LV` - Latvia
+            * `LB` - Lebanon
+            * `LS` - Lesotho
+            * `LR` - Liberia
+            * `LY` - Libya
+            * `LI` - Liechtenstein
+            * `LT` - Lithuania
+            * `LU` - Luxembourg
+            * `MO` - Macao
+            * `MG` - Madagascar
+            * `MW` - Malawi
+            * `MY` - Malaysia
+            * `MV` - Maldives
+            * `ML` - Mali
+            * `MT` - Malta
+            * `MH` - Marshall Islands
+            * `MQ` - Martinique
+            * `MR` - Mauritania
+            * `MU` - Mauritius
+            * `YT` - Mayotte
+            * `MX` - Mexico
+            * `FM` - Micronesia
+            * `MD` - Moldova
+            * `MC` - Monaco
+            * `MN` - Mongolia
+            * `ME` - Montenegro
+            * `MS` - Montserrat
+            * `MA` - Morocco
+            * `MZ` - Mozambique
+            * `MM` - Myanmar
+            * `NA` - Namibia
+            * `NR` - Nauru
+            * `NP` - Nepal
+            * `NL` - Netherlands
+            * `NC` - New Caledonia
+            * `NZ` - New Zealand
+            * `NI` - Nicaragua
+            * `NE` - Niger
+            * `NG` - Nigeria
+            * `NU` - Niue
+            * `NF` - Norfolk Island
+            * `KP` - North Korea
+            * `MK` - North Macedonia
+            * `MP` - Northern Mariana Islands
+            * `NO` - Norway
+            * `OM` - Oman
+            * `PK` - Pakistan
+            * `PW` - Palau
+            * `PS` - Palestine, State of
+            * `PA` - Panama
+            * `PG` - Papua New Guinea
+            * `PY` - Paraguay
+            * `PE` - Peru
+            * `PH` - Philippines
+            * `PN` - Pitcairn
+            * `PL` - Poland
+            * `PT` - Portugal
+            * `PR` - Puerto Rico
+            * `QA` - Qatar
+            * `RE` - Réunion
+            * `RO` - Romania
+            * `RU` - Russia
+            * `RW` - Rwanda
+            * `BL` - Saint Barthélemy
+            * `SH` - Saint Helena, Ascension and Tristan da Cunha
+            * `KN` - Saint Kitts and Nevis
+            * `LC` - Saint Lucia
+            * `MF` - Saint Martin (French part)
+            * `PM` - Saint Pierre and Miquelon
+            * `VC` - Saint Vincent and the Grenadines
+            * `WS` - Samoa
+            * `SM` - San Marino
+            * `ST` - Sao Tome and Principe
+            * `SA` - Saudi Arabia
+            * `SN` - Senegal
+            * `RS` - Serbia
+            * `SC` - Seychelles
+            * `SL` - Sierra Leone
+            * `SG` - Singapore
+            * `SX` - Sint Maarten (Dutch part)
+            * `SK` - Slovakia
+            * `SI` - Slovenia
+            * `SB` - Solomon Islands
+            * `SO` - Somalia
+            * `ZA` - South Africa
+            * `GS` - South Georgia and the South Sandwich Islands
+            * `KR` - South Korea
+            * `SS` - South Sudan
+            * `ES` - Spain
+            * `LK` - Sri Lanka
+            * `SD` - Sudan
+            * `SR` - Suriname
+            * `SJ` - Svalbard and Jan Mayen
+            * `SE` - Sweden
+            * `CH` - Switzerland
+            * `SY` - Syria
+            * `TW` - Taiwan
+            * `TJ` - Tajikistan
+            * `TZ` - Tanzania
+            * `TH` - Thailand
+            * `TL` - Timor-Leste
+            * `TG` - Togo
+            * `TK` - Tokelau
+            * `TO` - Tonga
+            * `TT` - Trinidad and Tobago
+            * `TN` - Tunisia
+            * `TR` - Türkiye
+            * `TM` - Turkmenistan
+            * `TC` - Turks and Caicos Islands
+            * `TV` - Tuvalu
+            * `UG` - Uganda
+            * `UA` - Ukraine
+            * `AE` - United Arab Emirates
+            * `GB` - United Kingdom
+            * `UM` - United States Minor Outlying Islands
+            * `US` - United States of America
+            * `UY` - Uruguay
+            * `UZ` - Uzbekistan
+            * `VU` - Vanuatu
+            * `VE` - Venezuela
+            * `VN` - Vietnam
+            * `VG` - Virgin Islands (British)
+            * `VI` - Virgin Islands (U.S.)
+            * `WF` - Wallis and Futuna
+            * `EH` - Western Sahara
+            * `YE` - Yemen
+            * `ZM` - Zambia
+            * `ZW` - Zimbabwe
+          oneOf:
+          - $ref: '#/components/schemas/CountriesEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+        cities:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: Cities included in this region
+        postal_codes:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: Postal codes included in this region
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        metadata:
+          readOnly: true
+          nullable: true
+    PatchedOrder:
+      type: object
+      properties:
+        order_number:
+          type: string
+          description: Unique order identifier
+          maxLength: 20
+        status:
+          allOf:
+          - $ref: '#/components/schemas/OrderStatusEnum'
+          readOnly: true
+          description: |-
+            Current status of the order
+
+            * `draft` - Draft
+            * `pending_payment` - Pending Payment
+            * `confirmed` - Confirmed
+            * `completed` - Completed
+            * `cancelled` - Cancelled
+            * `disputed` - Disputed
+        price:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: Price of the order
+        shipping_surcharge:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: Surcharge of the shipping
+        options_surcharge:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: Surcharge of the selected options
+        marketplace_commission_amount:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: Fee of the marketplace commission
+        customer:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Customer who placed the order
+        shipping_address:
+          type: string
+          format: uuid
+          description: Shipping address for the order
+        billing_address:
+          type: string
+          format: uuid
+          description: Billing address for the order
+        order_lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderLine'
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        metadata:
+          readOnly: true
+          nullable: true
+    PatchedOrderLine:
+      type: object
+      properties:
+        stock_record:
+          type: string
+          format: uuid
+          description: Stock record for the ordered product
+        quantity:
+          type: integer
+          maximum: 32767
+          minimum: 0
+          description: Quantity ordered
+        selected_options:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: Product options selected for this line item
+        price:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: Price of the order line
+        options_surcharge:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: Surcharge of the selected options
+        status:
+          allOf:
+          - $ref: '#/components/schemas/OrderLineStatusEnum'
+          description: |-
+            Current status of the order line
+
+            * `draft` - Draft
+            * `failed` - Failed
+            * `completed` - Completed
+            * `disputed` - Disputed
+        order:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Parent order
+        store_order:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Associated store order
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        metadata:
+          readOnly: true
+          nullable: true
+    PatchedPostalCode:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Postal or ZIP code (e.g. '10001')
+          maxLength: 255
+        city:
+          type: string
+          description: City name (e.g. 'New York')
+          maxLength: 255
+        state:
+          type: string
+          description: State or province name (e.g. 'NY')
+          maxLength: 255
+        country:
+          allOf:
+          - $ref: '#/components/schemas/CountryEnum'
+          description: |-
+            Two-letter country code (e.g. 'US')
+
+            * `AF` - Afghanistan
+            * `AX` - Åland Islands
+            * `AL` - Albania
+            * `DZ` - Algeria
+            * `AS` - American Samoa
+            * `AD` - Andorra
+            * `AO` - Angola
+            * `AI` - Anguilla
+            * `AQ` - Antarctica
+            * `AG` - Antigua and Barbuda
+            * `AR` - Argentina
+            * `AM` - Armenia
+            * `AW` - Aruba
+            * `AU` - Australia
+            * `AT` - Austria
+            * `AZ` - Azerbaijan
+            * `BS` - Bahamas
+            * `BH` - Bahrain
+            * `BD` - Bangladesh
+            * `BB` - Barbados
+            * `BY` - Belarus
+            * `BE` - Belgium
+            * `BZ` - Belize
+            * `BJ` - Benin
+            * `BM` - Bermuda
+            * `BT` - Bhutan
+            * `BO` - Bolivia
+            * `BQ` - Bonaire, Sint Eustatius and Saba
+            * `BA` - Bosnia and Herzegovina
+            * `BW` - Botswana
+            * `BV` - Bouvet Island
+            * `BR` - Brazil
+            * `IO` - British Indian Ocean Territory
+            * `BN` - Brunei
+            * `BG` - Bulgaria
+            * `BF` - Burkina Faso
+            * `BI` - Burundi
+            * `CV` - Cabo Verde
+            * `KH` - Cambodia
+            * `CM` - Cameroon
+            * `CA` - Canada
+            * `KY` - Cayman Islands
+            * `CF` - Central African Republic
+            * `TD` - Chad
+            * `CL` - Chile
+            * `CN` - China
+            * `CX` - Christmas Island
+            * `CC` - Cocos (Keeling) Islands
+            * `CO` - Colombia
+            * `KM` - Comoros
+            * `CG` - Congo
+            * `CD` - Congo (the Democratic Republic of the)
+            * `CK` - Cook Islands
+            * `CR` - Costa Rica
+            * `CI` - Côte d'Ivoire
+            * `HR` - Croatia
+            * `CU` - Cuba
+            * `CW` - Curaçao
+            * `CY` - Cyprus
+            * `CZ` - Czechia
+            * `DK` - Denmark
+            * `DJ` - Djibouti
+            * `DM` - Dominica
+            * `DO` - Dominican Republic
+            * `EC` - Ecuador
+            * `EG` - Egypt
+            * `SV` - El Salvador
+            * `GQ` - Equatorial Guinea
+            * `ER` - Eritrea
+            * `EE` - Estonia
+            * `SZ` - Eswatini
+            * `ET` - Ethiopia
+            * `FK` - Falkland Islands (Malvinas)
+            * `FO` - Faroe Islands
+            * `FJ` - Fiji
+            * `FI` - Finland
+            * `FR` - France
+            * `GF` - French Guiana
+            * `PF` - French Polynesia
+            * `TF` - French Southern Territories
+            * `GA` - Gabon
+            * `GM` - Gambia
+            * `GE` - Georgia
+            * `DE` - Germany
+            * `GH` - Ghana
+            * `GI` - Gibraltar
+            * `GR` - Greece
+            * `GL` - Greenland
+            * `GD` - Grenada
+            * `GP` - Guadeloupe
+            * `GU` - Guam
+            * `GT` - Guatemala
+            * `GG` - Guernsey
+            * `GN` - Guinea
+            * `GW` - Guinea-Bissau
+            * `GY` - Guyana
+            * `HT` - Haiti
+            * `HM` - Heard Island and McDonald Islands
+            * `VA` - Holy See
+            * `HN` - Honduras
+            * `HK` - Hong Kong
+            * `HU` - Hungary
+            * `IS` - Iceland
+            * `IN` - India
+            * `ID` - Indonesia
+            * `IR` - Iran
+            * `IQ` - Iraq
+            * `IE` - Ireland
+            * `IM` - Isle of Man
+            * `IL` - Israel
+            * `IT` - Italy
+            * `JM` - Jamaica
+            * `JP` - Japan
+            * `JE` - Jersey
+            * `JO` - Jordan
+            * `KZ` - Kazakhstan
+            * `KE` - Kenya
+            * `KI` - Kiribati
+            * `KW` - Kuwait
+            * `KG` - Kyrgyzstan
+            * `LA` - Laos
+            * `LV` - Latvia
+            * `LB` - Lebanon
+            * `LS` - Lesotho
+            * `LR` - Liberia
+            * `LY` - Libya
+            * `LI` - Liechtenstein
+            * `LT` - Lithuania
+            * `LU` - Luxembourg
+            * `MO` - Macao
+            * `MG` - Madagascar
+            * `MW` - Malawi
+            * `MY` - Malaysia
+            * `MV` - Maldives
+            * `ML` - Mali
+            * `MT` - Malta
+            * `MH` - Marshall Islands
+            * `MQ` - Martinique
+            * `MR` - Mauritania
+            * `MU` - Mauritius
+            * `YT` - Mayotte
+            * `MX` - Mexico
+            * `FM` - Micronesia
+            * `MD` - Moldova
+            * `MC` - Monaco
+            * `MN` - Mongolia
+            * `ME` - Montenegro
+            * `MS` - Montserrat
+            * `MA` - Morocco
+            * `MZ` - Mozambique
+            * `MM` - Myanmar
+            * `NA` - Namibia
+            * `NR` - Nauru
+            * `NP` - Nepal
+            * `NL` - Netherlands
+            * `NC` - New Caledonia
+            * `NZ` - New Zealand
+            * `NI` - Nicaragua
+            * `NE` - Niger
+            * `NG` - Nigeria
+            * `NU` - Niue
+            * `NF` - Norfolk Island
+            * `KP` - North Korea
+            * `MK` - North Macedonia
+            * `MP` - Northern Mariana Islands
+            * `NO` - Norway
+            * `OM` - Oman
+            * `PK` - Pakistan
+            * `PW` - Palau
+            * `PS` - Palestine, State of
+            * `PA` - Panama
+            * `PG` - Papua New Guinea
+            * `PY` - Paraguay
+            * `PE` - Peru
+            * `PH` - Philippines
+            * `PN` - Pitcairn
+            * `PL` - Poland
+            * `PT` - Portugal
+            * `PR` - Puerto Rico
+            * `QA` - Qatar
+            * `RE` - Réunion
+            * `RO` - Romania
+            * `RU` - Russia
+            * `RW` - Rwanda
+            * `BL` - Saint Barthélemy
+            * `SH` - Saint Helena, Ascension and Tristan da Cunha
+            * `KN` - Saint Kitts and Nevis
+            * `LC` - Saint Lucia
+            * `MF` - Saint Martin (French part)
+            * `PM` - Saint Pierre and Miquelon
+            * `VC` - Saint Vincent and the Grenadines
+            * `WS` - Samoa
+            * `SM` - San Marino
+            * `ST` - Sao Tome and Principe
+            * `SA` - Saudi Arabia
+            * `SN` - Senegal
+            * `RS` - Serbia
+            * `SC` - Seychelles
+            * `SL` - Sierra Leone
+            * `SG` - Singapore
+            * `SX` - Sint Maarten (Dutch part)
+            * `SK` - Slovakia
+            * `SI` - Slovenia
+            * `SB` - Solomon Islands
+            * `SO` - Somalia
+            * `ZA` - South Africa
+            * `GS` - South Georgia and the South Sandwich Islands
+            * `KR` - South Korea
+            * `SS` - South Sudan
+            * `ES` - Spain
+            * `LK` - Sri Lanka
+            * `SD` - Sudan
+            * `SR` - Suriname
+            * `SJ` - Svalbard and Jan Mayen
+            * `SE` - Sweden
+            * `CH` - Switzerland
+            * `SY` - Syria
+            * `TW` - Taiwan
+            * `TJ` - Tajikistan
+            * `TZ` - Tanzania
+            * `TH` - Thailand
+            * `TL` - Timor-Leste
+            * `TG` - Togo
+            * `TK` - Tokelau
+            * `TO` - Tonga
+            * `TT` - Trinidad and Tobago
+            * `TN` - Tunisia
+            * `TR` - Türkiye
+            * `TM` - Turkmenistan
+            * `TC` - Turks and Caicos Islands
+            * `TV` - Tuvalu
+            * `UG` - Uganda
+            * `UA` - Ukraine
+            * `AE` - United Arab Emirates
+            * `GB` - United Kingdom
+            * `UM` - United States Minor Outlying Islands
+            * `US` - United States of America
+            * `UY` - Uruguay
+            * `UZ` - Uzbekistan
+            * `VU` - Vanuatu
+            * `VE` - Venezuela
+            * `VN` - Vietnam
+            * `VG` - Virgin Islands (British)
+            * `VI` - Virgin Islands (U.S.)
+            * `WF` - Wallis and Futuna
+            * `EH` - Western Sahara
+            * `YE` - Yemen
+            * `ZM` - Zambia
+            * `ZW` - Zimbabwe
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        metadata:
+          readOnly: true
+          nullable: true
+    PatchedStoreOrder:
+      type: object
+      properties:
+        order_number:
+          type: string
+          readOnly: true
+        order:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Parent order
+        order_lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderLine'
+        store:
+          type: string
+          format: uuid
+          description: Store fulfilling this order
+        status:
+          allOf:
+          - $ref: '#/components/schemas/StoreOrderStatusEnum'
+          description: |-
+            Current status of the store order
+
+            * `draft` - Draft
+            * `pending_payment` - Pending Payment
+            * `confirmed` - Confirmed
+            * `completed` - Completed
+            * `cancelled` - Cancelled
+            * `disputed` - Disputed
+            * `payment_failed` - Payment Failed
+            * `checkout_failed` - Checkout Failed
+        related_store_orders:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: Store orders related to this order
+        price:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: Price of the store order
+        shipping_surcharge:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: Surcharge of the shipping
+        options_surcharge:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: Surcharge of the selected options
+        marketplace_commission_amount:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: Fee of the marketplace commission
+        payout_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          readOnly: true
+          description: Payout amount for the store order
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        metadata:
+          readOnly: true
+          nullable: true
+    PatchedUser:
+      type: object
+      properties:
+        name:
+          type: string
+          title: Name of User
+          maxLength: 255
+        url:
+          type: string
+          format: uri
+          readOnly: true
+    PostalCode:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Postal or ZIP code (e.g. '10001')
+          maxLength: 255
+        city:
+          type: string
+          description: City name (e.g. 'New York')
+          maxLength: 255
+        state:
+          type: string
+          description: State or province name (e.g. 'NY')
+          maxLength: 255
+        country:
+          allOf:
+          - $ref: '#/components/schemas/CountryEnum'
+          description: |-
+            Two-letter country code (e.g. 'US')
+
+            * `AF` - Afghanistan
+            * `AX` - Åland Islands
+            * `AL` - Albania
+            * `DZ` - Algeria
+            * `AS` - American Samoa
+            * `AD` - Andorra
+            * `AO` - Angola
+            * `AI` - Anguilla
+            * `AQ` - Antarctica
+            * `AG` - Antigua and Barbuda
+            * `AR` - Argentina
+            * `AM` - Armenia
+            * `AW` - Aruba
+            * `AU` - Australia
+            * `AT` - Austria
+            * `AZ` - Azerbaijan
+            * `BS` - Bahamas
+            * `BH` - Bahrain
+            * `BD` - Bangladesh
+            * `BB` - Barbados
+            * `BY` - Belarus
+            * `BE` - Belgium
+            * `BZ` - Belize
+            * `BJ` - Benin
+            * `BM` - Bermuda
+            * `BT` - Bhutan
+            * `BO` - Bolivia
+            * `BQ` - Bonaire, Sint Eustatius and Saba
+            * `BA` - Bosnia and Herzegovina
+            * `BW` - Botswana
+            * `BV` - Bouvet Island
+            * `BR` - Brazil
+            * `IO` - British Indian Ocean Territory
+            * `BN` - Brunei
+            * `BG` - Bulgaria
+            * `BF` - Burkina Faso
+            * `BI` - Burundi
+            * `CV` - Cabo Verde
+            * `KH` - Cambodia
+            * `CM` - Cameroon
+            * `CA` - Canada
+            * `KY` - Cayman Islands
+            * `CF` - Central African Republic
+            * `TD` - Chad
+            * `CL` - Chile
+            * `CN` - China
+            * `CX` - Christmas Island
+            * `CC` - Cocos (Keeling) Islands
+            * `CO` - Colombia
+            * `KM` - Comoros
+            * `CG` - Congo
+            * `CD` - Congo (the Democratic Republic of the)
+            * `CK` - Cook Islands
+            * `CR` - Costa Rica
+            * `CI` - Côte d'Ivoire
+            * `HR` - Croatia
+            * `CU` - Cuba
+            * `CW` - Curaçao
+            * `CY` - Cyprus
+            * `CZ` - Czechia
+            * `DK` - Denmark
+            * `DJ` - Djibouti
+            * `DM` - Dominica
+            * `DO` - Dominican Republic
+            * `EC` - Ecuador
+            * `EG` - Egypt
+            * `SV` - El Salvador
+            * `GQ` - Equatorial Guinea
+            * `ER` - Eritrea
+            * `EE` - Estonia
+            * `SZ` - Eswatini
+            * `ET` - Ethiopia
+            * `FK` - Falkland Islands (Malvinas)
+            * `FO` - Faroe Islands
+            * `FJ` - Fiji
+            * `FI` - Finland
+            * `FR` - France
+            * `GF` - French Guiana
+            * `PF` - French Polynesia
+            * `TF` - French Southern Territories
+            * `GA` - Gabon
+            * `GM` - Gambia
+            * `GE` - Georgia
+            * `DE` - Germany
+            * `GH` - Ghana
+            * `GI` - Gibraltar
+            * `GR` - Greece
+            * `GL` - Greenland
+            * `GD` - Grenada
+            * `GP` - Guadeloupe
+            * `GU` - Guam
+            * `GT` - Guatemala
+            * `GG` - Guernsey
+            * `GN` - Guinea
+            * `GW` - Guinea-Bissau
+            * `GY` - Guyana
+            * `HT` - Haiti
+            * `HM` - Heard Island and McDonald Islands
+            * `VA` - Holy See
+            * `HN` - Honduras
+            * `HK` - Hong Kong
+            * `HU` - Hungary
+            * `IS` - Iceland
+            * `IN` - India
+            * `ID` - Indonesia
+            * `IR` - Iran
+            * `IQ` - Iraq
+            * `IE` - Ireland
+            * `IM` - Isle of Man
+            * `IL` - Israel
+            * `IT` - Italy
+            * `JM` - Jamaica
+            * `JP` - Japan
+            * `JE` - Jersey
+            * `JO` - Jordan
+            * `KZ` - Kazakhstan
+            * `KE` - Kenya
+            * `KI` - Kiribati
+            * `KW` - Kuwait
+            * `KG` - Kyrgyzstan
+            * `LA` - Laos
+            * `LV` - Latvia
+            * `LB` - Lebanon
+            * `LS` - Lesotho
+            * `LR` - Liberia
+            * `LY` - Libya
+            * `LI` - Liechtenstein
+            * `LT` - Lithuania
+            * `LU` - Luxembourg
+            * `MO` - Macao
+            * `MG` - Madagascar
+            * `MW` - Malawi
+            * `MY` - Malaysia
+            * `MV` - Maldives
+            * `ML` - Mali
+            * `MT` - Malta
+            * `MH` - Marshall Islands
+            * `MQ` - Martinique
+            * `MR` - Mauritania
+            * `MU` - Mauritius
+            * `YT` - Mayotte
+            * `MX` - Mexico
+            * `FM` - Micronesia
+            * `MD` - Moldova
+            * `MC` - Monaco
+            * `MN` - Mongolia
+            * `ME` - Montenegro
+            * `MS` - Montserrat
+            * `MA` - Morocco
+            * `MZ` - Mozambique
+            * `MM` - Myanmar
+            * `NA` - Namibia
+            * `NR` - Nauru
+            * `NP` - Nepal
+            * `NL` - Netherlands
+            * `NC` - New Caledonia
+            * `NZ` - New Zealand
+            * `NI` - Nicaragua
+            * `NE` - Niger
+            * `NG` - Nigeria
+            * `NU` - Niue
+            * `NF` - Norfolk Island
+            * `KP` - North Korea
+            * `MK` - North Macedonia
+            * `MP` - Northern Mariana Islands
+            * `NO` - Norway
+            * `OM` - Oman
+            * `PK` - Pakistan
+            * `PW` - Palau
+            * `PS` - Palestine, State of
+            * `PA` - Panama
+            * `PG` - Papua New Guinea
+            * `PY` - Paraguay
+            * `PE` - Peru
+            * `PH` - Philippines
+            * `PN` - Pitcairn
+            * `PL` - Poland
+            * `PT` - Portugal
+            * `PR` - Puerto Rico
+            * `QA` - Qatar
+            * `RE` - Réunion
+            * `RO` - Romania
+            * `RU` - Russia
+            * `RW` - Rwanda
+            * `BL` - Saint Barthélemy
+            * `SH` - Saint Helena, Ascension and Tristan da Cunha
+            * `KN` - Saint Kitts and Nevis
+            * `LC` - Saint Lucia
+            * `MF` - Saint Martin (French part)
+            * `PM` - Saint Pierre and Miquelon
+            * `VC` - Saint Vincent and the Grenadines
+            * `WS` - Samoa
+            * `SM` - San Marino
+            * `ST` - Sao Tome and Principe
+            * `SA` - Saudi Arabia
+            * `SN` - Senegal
+            * `RS` - Serbia
+            * `SC` - Seychelles
+            * `SL` - Sierra Leone
+            * `SG` - Singapore
+            * `SX` - Sint Maarten (Dutch part)
+            * `SK` - Slovakia
+            * `SI` - Slovenia
+            * `SB` - Solomon Islands
+            * `SO` - Somalia
+            * `ZA` - South Africa
+            * `GS` - South Georgia and the South Sandwich Islands
+            * `KR` - South Korea
+            * `SS` - South Sudan
+            * `ES` - Spain
+            * `LK` - Sri Lanka
+            * `SD` - Sudan
+            * `SR` - Suriname
+            * `SJ` - Svalbard and Jan Mayen
+            * `SE` - Sweden
+            * `CH` - Switzerland
+            * `SY` - Syria
+            * `TW` - Taiwan
+            * `TJ` - Tajikistan
+            * `TZ` - Tanzania
+            * `TH` - Thailand
+            * `TL` - Timor-Leste
+            * `TG` - Togo
+            * `TK` - Tokelau
+            * `TO` - Tonga
+            * `TT` - Trinidad and Tobago
+            * `TN` - Tunisia
+            * `TR` - Türkiye
+            * `TM` - Turkmenistan
+            * `TC` - Turks and Caicos Islands
+            * `TV` - Tuvalu
+            * `UG` - Uganda
+            * `UA` - Ukraine
+            * `AE` - United Arab Emirates
+            * `GB` - United Kingdom
+            * `UM` - United States Minor Outlying Islands
+            * `US` - United States of America
+            * `UY` - Uruguay
+            * `UZ` - Uzbekistan
+            * `VU` - Vanuatu
+            * `VE` - Venezuela
+            * `VN` - Vietnam
+            * `VG` - Virgin Islands (British)
+            * `VI` - Virgin Islands (U.S.)
+            * `WF` - Wallis and Futuna
+            * `EH` - Western Sahara
+            * `YE` - Yemen
+            * `ZM` - Zambia
+            * `ZW` - Zimbabwe
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        metadata:
+          readOnly: true
+          nullable: true
+      required:
+      - city
+      - code
+      - country
+      - created_at
+      - metadata
+      - state
+      - updated_at
+    StoreOrder:
+      type: object
+      properties:
+        order_number:
+          type: string
+          readOnly: true
+        order:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Parent order
+        order_lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderLine'
+        store:
+          type: string
+          format: uuid
+          description: Store fulfilling this order
+        status:
+          allOf:
+          - $ref: '#/components/schemas/StoreOrderStatusEnum'
+          description: |-
+            Current status of the store order
+
+            * `draft` - Draft
+            * `pending_payment` - Pending Payment
+            * `confirmed` - Confirmed
+            * `completed` - Completed
+            * `cancelled` - Cancelled
+            * `disputed` - Disputed
+            * `payment_failed` - Payment Failed
+            * `checkout_failed` - Checkout Failed
+        related_store_orders:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: Store orders related to this order
+        price:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: Price of the store order
+        shipping_surcharge:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: Surcharge of the shipping
+        options_surcharge:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: Surcharge of the selected options
+        marketplace_commission_amount:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: Fee of the marketplace commission
+        payout_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          readOnly: true
+          description: Payout amount for the store order
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        metadata:
+          readOnly: true
+          nullable: true
+      required:
+      - created_at
+      - marketplace_commission_amount
+      - metadata
+      - options_surcharge
+      - order
+      - order_lines
+      - order_number
+      - payout_amount
+      - price
+      - related_store_orders
+      - shipping_surcharge
+      - store
+      - updated_at
+    StoreOrderStatusEnum:
+      enum:
+      - draft
+      - pending_payment
+      - confirmed
+      - completed
+      - cancelled
+      - disputed
+      - payment_failed
+      - checkout_failed
+      type: string
+      description: |-
+        * `draft` - Draft
+        * `pending_payment` - Pending Payment
+        * `confirmed` - Confirmed
+        * `completed` - Completed
+        * `cancelled` - Cancelled
+        * `disputed` - Disputed
+        * `payment_failed` - Payment Failed
+        * `checkout_failed` - Checkout Failed
+    User:
+      type: object
+      properties:
+        name:
+          type: string
+          title: Name of User
+          maxLength: 255
+        url:
+          type: string
+          format: uri
+          readOnly: true
+      required:
+      - url
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
