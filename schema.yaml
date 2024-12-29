@@ -3,10 +3,13 @@ info:
   title: All Marketplaces API
   version: 1.0.0
   description: Documentation of API endpoints of All Marketplaces
+
 servers:
-  - url: http://localhost:8000/
+  - url: http://localhost:8000/api/
+    description: Localhost
+
 paths:
-  /api/addresses:
+  /api/addresses/:
     get:
       operationId: addresses_list
       tags:
@@ -47,7 +50,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Address'
           description: ''
-  /api/addresses/{id}:
+  /api/addresses/{id}/:
     get:
       operationId: addresses_retrieve
       parameters:
@@ -151,7 +154,7 @@ paths:
       responses:
         '204':
           description: No response body
-  /api/auth-token:
+  /api/auth-token/:
     post:
       operationId: auth_token_create
       tags:
@@ -177,7 +180,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthToken'
           description: ''
-  /api/errors:
+  /api/errors/:
     get:
       operationId: errors_list
       tags:
@@ -193,7 +196,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Error'
           description: ''
-  /api/errors/{id}:
+  /api/errors/{id}/:
     get:
       operationId: errors_retrieve
       parameters:
@@ -215,7 +218,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: ''
-  /api/geo-regions:
+  /api/geo-regions/:
     get:
       operationId: geo_regions_list
       tags:
@@ -256,7 +259,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/GeoRegion'
           description: ''
-  /api/geo-regions/{id}:
+  /api/geo-regions/{id}/:
     get:
       operationId: geo_regions_retrieve
       parameters:
@@ -360,7 +363,7 @@ paths:
       responses:
         '204':
           description: No response body
-  /api/order-lines:
+  /api/order-lines/:
     get:
       operationId: order_lines_list
       tags:
@@ -401,7 +404,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/OrderLine'
           description: ''
-  /api/order-lines/{id}:
+  /api/order-lines/{id}/:
     get:
       operationId: order_lines_retrieve
       parameters:
@@ -505,7 +508,7 @@ paths:
       responses:
         '204':
           description: No response body
-  /api/orders:
+  /api/orders/:
     get:
       operationId: orders_list
       tags:
@@ -546,7 +549,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Order'
           description: ''
-  /api/orders/{id}:
+  /api/orders/{id}/:
     get:
       operationId: orders_retrieve
       parameters:
@@ -650,7 +653,7 @@ paths:
       responses:
         '204':
           description: No response body
-  /api/postal-codes:
+  /api/postal-codes/:
     get:
       operationId: postal_codes_list
       tags:
@@ -691,7 +694,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PostalCode'
           description: ''
-  /api/postal-codes/{id}:
+  /api/postal-codes/{id}/:
     get:
       operationId: postal_codes_retrieve
       parameters:
@@ -795,7 +798,7 @@ paths:
       responses:
         '204':
           description: No response body
-  /api/schema:
+  /api/schema/:
     get:
       operationId: schema_retrieve
       description: |-
@@ -939,7 +942,7 @@ paths:
                 type: object
                 additionalProperties: {}
           description: ''
-  /api/store-orders:
+  /api/store-orders/:
     get:
       operationId: store_orders_list
       tags:
@@ -980,7 +983,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/StoreOrder'
           description: ''
-  /api/store-orders/{id}:
+  /api/store-orders/{id}/:
     get:
       operationId: store_orders_retrieve
       parameters:
@@ -1084,7 +1087,7 @@ paths:
       responses:
         '204':
           description: No response body
-  /api/users:
+  /api/users/:
     get:
       operationId: users_list
       tags:
@@ -1100,7 +1103,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/User'
           description: ''
-  /api/users/{id}:
+  /api/users/{id}/:
     get:
       operationId: users_retrieve
       parameters:
@@ -1186,7 +1189,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/User'
           description: ''
-  /api/users/me:
+  /api/users/me/:
     get:
       operationId: users_me_retrieve
       tags:
